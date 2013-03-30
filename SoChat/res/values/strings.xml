@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SoChat</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_section1">Broadcast</string>
+    <string name="title_section2">Nearby</string>
+    <string name="title_section3">FileSharing</string>
+    <string name="desc">img</string>
+    <string name="title_activity_chat">ChatActivity</string>
+    <string name="hello_world">Hello world!</string>
+	 <string name="chat_hint">Enter the message..</string>
+	 <string name="btn_sendImage">Image</string>
+	  <string name="btn_sendFile">File</string>
+	    
+</resources>
