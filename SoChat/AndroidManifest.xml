@@ -5,30 +5,73 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="14"
+        android:minSdkVersion="15"
         android:targetSdkVersion="17" />
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
     <application
+        android:name="nus.cs4222.sochat.SochatApplication"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/icon_sochat"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Holo" >
         <activity
             android:name="nus.cs4222.sochat.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="nus.cs4222.sochat.ChatActivity"
+            android:label="@string/title_activity_chat"
+            android:parentActivityName="nus.cs4222.sochat.MainActivity"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="nus.cs4222.sochat.MainActivity" />
+        </activity>
+
+        <service android:name="nus.cs4222.sochat.LocalService" />
+
+        <activity
+            android:name="nus.cs4222.sochat.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+        </activity>
+        <activity
+            android:name="nus.cs4222.sochat.BroadcastActivity"
+            android:label="@string/title_activity_chat"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="nus.cs4222.sochat.MainActivity" />
+        </activity>
+        <activity
+            android:name="nus.cs4222.sochat.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="nus.cs4222.sochat.SplashActivity"
+            android:label="@string/title_activity_splash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="nus.cs4222.sochat.ChatActivity"
-            android:label="@string/title_activity_chat"
-            android:parentActivityName="nus.cs4222.sochat.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="nus.cs4222.sochat.MainActivity" />
         </activity>
     </application>
 

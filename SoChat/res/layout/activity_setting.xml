@@ -1,0 +1,174 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".SettingsActivity" >
+
+    <RelativeLayout
+        android:id="@+id/setting_form"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent" >
+
+        <Button
+            android:id="@+id/setting_confirm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/setting_status"
+            android:alpha="1"
+            android:background="@drawable/btn_selector"
+            android:drawableLeft="@drawable/checkmark"
+            android:onClick="confirm"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:text="Confirm"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/group_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView2"
+            android:layout_alignParentTop="true"
+            android:text="Basic"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/group_name"
+            android:background="@color/app_blue" />
+
+        <View
+            android:id="@+id/View01"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@color/app_blue" />
+
+        <TextView
+            android:id="@+id/TextView03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/birthday_btn"
+            android:layout_alignBottom="@+id/birthday_btn"
+            android:layout_alignLeft="@+id/TextView01"
+            android:text="Birthday*" />
+
+        <EditText
+            android:id="@+id/setting_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_alignLeft="@+id/setting_radioButtonMale"
+            android:layout_alignRight="@+id/setting_status"
+            android:ems="10"
+            android:hint="@string/prompt_username"
+            android:imeOptions="actionDone"
+            android:inputType="textCapWords|textEmailAddress"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textSize="10sp" >
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/view1"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="14dp"
+            android:text="Username*" />
+
+        <EditText
+            android:id="@+id/setting_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/View01"
+            android:layout_alignLeft="@+id/birthday_btn"
+            android:layout_alignParentRight="true"
+            android:ems="10"
+            android:hint="Description of you..(optional)"
+            android:imeOptions="actionDone"
+            android:inputType="textCapSentences|textAutoCorrect"
+            android:maxLines="1"
+            android:text="&quot;Hello Everyone&quot;"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/birthday_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/setting_status"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/textView2"
+            android:drawableLeft="@drawable/time"
+            android:minHeight="30dip"
+            android:onClick="showDatePickerDialog"
+            android:text="Your birthday.."
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/setting_radioButtonFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/birthday_btn"
+            android:layout_toRightOf="@+id/setting_radioButtonMale"
+            android:onClick="femaleClicked"
+            android:text="Female" />
+
+        <TextView
+            android:id="@+id/profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/TextView01"
+            android:layout_alignTop="@+id/setting_profile_view"
+            android:layout_marginTop="22dp"
+            android:text="Profile" />
+
+        <ImageView
+            android:id="@+id/setting_profile_view"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_above="@+id/setting_radioButtonMale"
+            android:layout_alignLeft="@+id/setting_radioButtonMale"
+            android:clickable="true"
+            android:onClick="selectProfile"
+            android:src="@drawable/ic_launcher" />
+
+        <RadioButton
+            android:id="@+id/setting_radioButtonMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/setting_radioButtonFemale"
+            android:layout_alignBottom="@+id/setting_radioButtonFemale"
+            android:layout_alignLeft="@+id/birthday_btn"
+            android:checked="true"
+            android:onClick="maleClicked"
+            android:text="Male" />
+
+        <TextView
+            android:id="@+id/TextView02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/setting_status"
+            android:layout_alignBottom="@+id/setting_status"
+            android:layout_alignLeft="@+id/TextView03"
+            android:text="Status" />
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/setting_radioButtonMale"
+            android:layout_alignBottom="@+id/setting_radioButtonMale"
+            android:layout_alignLeft="@+id/textView2"
+            android:text="Gender*" />
+    </RelativeLayout>
+
+</merge>

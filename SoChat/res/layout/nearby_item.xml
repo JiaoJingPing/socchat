@@ -8,31 +8,79 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin" >
 
-    <TextView
-        android:id="@+id/nearby_name"
+    <RelativeLayout
+        android:id="@+id/nearby_item_set"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/nearby_profile_view"
+        android:onClick="onNearbyItemClicked" >
+
+        <TextView
+            android:id="@+id/nearby_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_toRightOf="@+id/nearby_profile_view"
+            android:maxHeight="@dimen/name_max_height"
+            android:maxWidth="@dimen/name_max_width"
+            android:text="Name"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="@dimen/name_font" />
+
+        <ImageView
+            android:id="@+id/nearby_profile_view"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/nearby_name"
+            android:layout_marginLeft="14dp"
+            android:contentDescription="@string/desc"
+            android:src="@drawable/pic_profile" />
+
+        <TextView
+            android:id="@+id/nearby_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/nearby_profile_view"
+            android:layout_alignLeft="@+id/nearby_name"
+            android:text="Gender" />
+
+        <TextView
+            android:id="@+id/nearby_ages"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/nearby_gender"
+            android:layout_alignLeft="@+id/nearby_gender"
+            android:text="Age"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/nearby_item_status"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/nearby_gender"
+            android:layout_alignTop="@+id/nearby_name"
+            android:layout_toRightOf="@+id/nearby_name"
+            android:gravity="center"
+            android:text="Status"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/gray"
+            android:textSize="10sp" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/nearby_follow_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="14dp"
-        android:layout_toRightOf="@+id/imageView1"
-        android:text="Name"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/nearby_gender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView1"
-        android:layout_alignLeft="@+id/nearby_name"
-        android:text="Gender" />
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/nearby_name"
-        android:layout_marginLeft="14dp"
-        android:contentDescription="@string/desc"
-        android:src="@drawable/pic_profile" />
+        android:layout_alignBottom="@+id/nearby_item_set"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/nearby_item_set"
+        android:alpha="0.8"
+        android:drawableBottom="@drawable/favorite"
+        android:onClick="onFollowClicked"
+        android:text="+Follow"
+        android:textColor="@color/app_blue"
+        android:textSize="10sp" />
 
 </RelativeLayout>

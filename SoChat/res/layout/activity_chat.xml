@@ -12,35 +12,39 @@
         android:orientation="vertical" >
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/chat_EditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/btn_sendFile"
+            android:layout_toLeftOf="@+id/btn_chat_sendVoice"
             android:ems="10"
             android:hint="@string/chat_hint"
-            android:inputType="text"
-            android:selectAllOnFocus="true" >
+            android:inputType="text" >
+
         </EditText>
 
         <ImageButton
-            android:id="@+id/btn_sendFile"
+            android:id="@+id/btn_chat_sendVoice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/chat_EditText"
             android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/btn_sendImage"
+            android:layout_toLeftOf="@+id/btn_chat_sendImage"
             android:contentDescription="@string/desc"
-            android:src="@drawable/folder" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/voice_normal" />
 
         <ImageButton
-            android:id="@+id/btn_sendImage"
+            android:id="@+id/btn_chat_sendImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/btn_chat_sendVoice"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:contentDescription="@string/desc"
-            android:src="@drawable/picture" />
+            android:scaleType="fitXY"
+            android:src="@drawable/photo" />
 
     </RelativeLayout>
 
@@ -48,11 +52,9 @@
         android:id="@+id/chatList"
         android:layout_width="match_parent"
         android:layout_height="380dp"
-        android:layout_above="@+id/form"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:transcriptMode="alwaysScroll" >
-
     </ListView>
 
 </RelativeLayout>

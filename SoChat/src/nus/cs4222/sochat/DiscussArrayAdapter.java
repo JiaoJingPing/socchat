@@ -1,32 +1,33 @@
 package nus.cs4222.sochat;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import nus.cs4222.sochat.R;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class DiscussArrayAdapter extends ArrayAdapter<OneComment> {
 
-	private TextView comment;
-	private List<OneComment> comments = new ArrayList<OneComment>();
-	private LinearLayout wrapper;
+	private TextView commentView;
+	ImageView profileView;
+	ImageView imageView;
+	private ArrayList<OneComment> comments = new ArrayList<OneComment>();
 
 	@Override
 	public void add(OneComment object) {
 		comments.add(object);
 		super.add(object);
+	}
+
+	public ArrayList<OneComment> getComments() {
+		return comments;
 	}
 
 	public DiscussArrayAdapter(Context context, int textViewResourceId) {
@@ -42,34 +43,71 @@ public class DiscussArrayAdapter extends ArrayAdapter<OneComment> {
 	}
 
 	public View getView(int position, View convertView, ViewGroup parent) {
-		View row = convertView;
-		if (row == null) {
-			LayoutInflater inflater = (LayoutInflater) this.getContext()
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			row = inflater.inflate(R.layout.listitem_chat, parent, false);
+		OneComment comment = getItem(position);
+		LayoutInflater inflater = (LayoutInflater) this.getContext()
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View row;
+
+		// Comment is voice
+		if (comment.getVoice_dir() != null
+				&& !comment.getVoice_dir().equalsIgnoreCase("")) {
+
+			if (comment.isLeft())
+				row = inflater.inflate(R.layout.listitem_voice_left, parent,
+						false);
+			else
+				row = inflater.inflate(R.layout.listitem_voice_right, parent,
+						false);
+			return row;
+		}
+		// Comment is picture
+		if (comment.getPicture_dir() != null
+				&& !comment.getPicture_dir().equalsIgnoreCase("")) {
+			if (comment.isLeft())
+				row = inflater.inflate(R.layout.listitem_image_left, parent,
+						false);
+			else
+				row = inflater.inflate(R.layout.listitem_image_right, parent,
+						false);
+
+			imageView = (ImageView) row.findViewById(R.id.chat_image);
+			setPicToView(imageView, comment.getPicture_dir());
+			return row;
 		}
 
-		wrapper = (LinearLayout) row.findViewById(R.id.wrapper);
-
-		OneComment coment = getItem(position);
-
-		comment = (TextView) row.findViewById(R.id.comment);
-		ImageView profile = (ImageView)row.findViewById(R.id.image_profile);
-		comment.setText(coment.comment);
-
-		comment.setBackgroundResource(coment.left ? R.drawable.bubble_yellow
-				: R.drawable.bubble_green);
-
-		if (coment.left) {
-			wrapper.setGravity(Gravity.LEFT);
-		} else {
-			wrapper.removeView(profile);
-			wrapper.removeView(comment);
-			wrapper.setGravity(Gravity.RIGHT);
-			wrapper.addView(comment);
-			wrapper.addView(profile);
-		}
+		// Else comment is text
+		if (comment.isLeft())
+			row = inflater.inflate(R.layout.listitem_text_left, parent, false);
+		else
+			row = inflater.inflate(R.layout.listitem_text_right, parent, false);
+		commentView = (TextView) row.findViewById(R.id.comment);
+		commentView.setText(comment.getComment());
 		return row;
+
+	}
+
+	private void setPicToView(ImageView mImageView, String mCurrentPhotoPath) {
+		// Get the dimensions of the View
+		int targetW = 80;
+		int targetH = 80;
+
+		// Get the dimensions of the bitmap
+		BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+		bmOptions.inJustDecodeBounds = true;
+		BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+		int photoW = bmOptions.outWidth;
+		int photoH = bmOptions.outHeight;
+
+		// Determine how much to scale down the image
+		int scaleFactor = Math.min(photoW / targetW, photoH / targetH);
+
+		// Decode the image file into a Bitmap sized to fill the View
+		bmOptions.inJustDecodeBounds = false;
+		bmOptions.inSampleSize = scaleFactor;
+		bmOptions.inPurgeable = true;
+
+		Bitmap bitmap = BitmapFactory.decodeFile(mCurrentPhotoPath, bmOptions);
+		mImageView.setImageBitmap(bitmap);
 	}
 
 	public Bitmap decodeToBitmap(byte[] decodedByte) {

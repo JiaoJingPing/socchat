@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/AppTheme"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:alpha="1"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:showDividers="beginning|middle|end" >
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="wrap_content"
+        android:layout_height="144dp"
+        android:alpha="0.5"
+        android:background="@color/app_blue" />
+
+    <Button
+        android:id="@+id/popup_photo_gallery"
+        style="@style/AppTheme"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:drawableLeft="@drawable/gallery"
+        android:text="@string/gallery_btn_text" />
+
+    <Button
+        android:id="@+id/popup_photo_camera"
+        style="@style/AppTheme"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:drawableLeft="@drawable/camera_blue"
+        android:text="@string/camera_btn_text" />
+
+    <Button
+        android:id="@+id/popup_photo_cancel"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="185dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:text="@string/btn_cancel" />
+
+</FrameLayout>

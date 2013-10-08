@@ -1,0 +1,142 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".LoginActivity" >
+
+    <RelativeLayout
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="457dp" >
+
+        <TextView
+            android:id="@+id/welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/app_blue"
+            android:gravity="center"
+            android:text="Welcome"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="60sp" />
+
+        <EditText
+            android:id="@+id/login_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/login_radioButtonMale"
+            android:layout_alignRight="@+id/login_radioButtonFemale"
+            android:layout_below="@+id/welcome"
+            android:ems="10"
+            android:hint="@string/prompt_username"
+            android:imeOptions="actionDone"
+            android:inputType="textCapWords|textEmailAddress"
+            android:maxLength="@integer/username_max_length"
+            android:maxLines="1"
+            android:singleLine="true" >
+
+            <requestFocus />
+        </EditText>
+
+        <RadioButton
+            android:id="@+id/login_radioButtonFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/login_username"
+            android:layout_marginRight="28dp"
+            android:onClick="femaleClicked"
+            android:text="Female" />
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/login_radioButtonMale"
+            android:layout_alignBottom="@+id/login_radioButtonMale"
+            android:layout_alignLeft="@+id/textView2"
+            android:text="Gender*" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/login_username"
+            android:layout_marginRight="26dp"
+            android:layout_toLeftOf="@+id/login_username"
+            android:text="Username*" />
+
+        <RadioButton
+            android:id="@+id/login_radioButtonMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_username"
+            android:layout_centerHorizontal="true"
+            android:checked="true"
+            android:onClick="maleClicked"
+            android:text="Male" />
+
+        <Button
+            android:id="@+id/signin_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:alpha="1"
+            android:background="@drawable/btn_selector"
+            android:onClick="signIn"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:text="Start"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/birthday_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/login_radioButtonMale"
+            android:layout_alignRight="@+id/login_radioButtonFemale"
+            android:layout_below="@+id/login_radioButtonFemale"
+            android:drawableLeft="@drawable/time"
+            android:minHeight="30dip"
+            android:onClick="showDatePickerDialog"
+            android:text="Your birthday.."
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/TextView03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/birthday_btn"
+            android:layout_alignBottom="@+id/birthday_btn"
+            android:layout_alignLeft="@+id/TextView01"
+            android:text="Birthday*" />
+
+        <EditText
+            android:id="@+id/login_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/birthday_btn"
+            android:layout_alignRight="@+id/birthday_btn"
+            android:layout_below="@+id/birthday_btn"
+            android:ems="10"
+            android:hint="Description of you..(optional)"
+            android:imeOptions="actionDone"
+            android:inputType="textCapSentences|textAutoCorrect"
+            android:maxLength="@integer/status_max_length"
+            android:maxLines="1"
+            android:text="Hello Everyone"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/TextView02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/login_status"
+            android:layout_alignBottom="@+id/login_status"
+            android:layout_alignLeft="@+id/TextView03"
+            android:text="Status" />
+
+    </RelativeLayout>
+
+</merge>

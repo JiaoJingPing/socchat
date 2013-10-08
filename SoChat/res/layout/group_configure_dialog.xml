@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/group_setting_text"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:hint="Less than 15 words, no space"
+        android:imeOptions="actionDone"
+        android:inputType="textShortMessage"
+        android:maxLines="1"
+        android:textSize="12sp" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/group_btn_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/group_setting_text"
+        android:layout_below="@+id/group_setting_text"
+        android:layout_marginRight="24dp"
+        android:text=" Cancel " />
+
+    <Button
+        android:id="@+id/group_btn_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/group_btn_cancel"
+        android:layout_alignBottom="@+id/group_btn_cancel"
+        android:layout_alignLeft="@+id/group_setting_text"
+        android:layout_marginLeft="27dp"
+        android:text="Confirm" />
+
+</RelativeLayout>
